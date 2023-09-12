@@ -40,7 +40,7 @@ pipeline {
 
         stage('Docker') {
           steps {
-            sh 'docker.withRegistry(\'\', \'7c560323-9f2e-476a-a8e3-ffc1480c333b\')'
+            sh 'docker login -u $DOCKERHUB_CRED_USR --password-stdin'
           }
         }
 
@@ -80,6 +80,6 @@ pipeline {
 
   }
   environment {
-    dockerhub_cred = 'e4012d43-b99e-4875-a48f-63d3a7c30cd4'
+    DOCKERHUB_CRED = 'e4012d43-b99e-4875-a48f-63d3a7c30cd4'
   }
 }
