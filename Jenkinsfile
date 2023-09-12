@@ -31,31 +31,14 @@ pipeline {
     }
 
     stage('Check Git') {
-      parallel {
-        stage('Check Git') {
-          steps {
-            git(url: 'https://github.com/judebevan/docker_minikube_jenkins_demo.git', branch: 'main', credentialsId: '7c560323-9f2e-476a-a8e3-ffc1480c333b')
-          }
-        }
-
-        stage('Docker') {
-          steps {
-            sh 'docker login judebevan JDbvn2829.'
-          }
-        }
-
+      steps {
+        git(url: 'https://github.com/judebevan/docker_minikube_jenkins_demo.git', branch: 'main', credentialsId: '7c560323-9f2e-476a-a8e3-ffc1480c333b')
       }
     }
 
     stage('Build') {
       steps {
         sh 'mvn compile test package'
-      }
-    }
-
-    stage('pushingToDocker') {
-      steps {
-        sh 'docker push judebevan/hello-world'
       }
     }
 
