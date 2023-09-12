@@ -31,8 +31,19 @@ pipeline {
     }
 
     stage('Check Git') {
-      steps {
-        git(url: 'https://github.com/judebevan/docker_minikube_jenkins_demo.git', branch: 'main', credentialsId: '7c560323-9f2e-476a-a8e3-ffc1480c333b')
+      parallel {
+        stage('Check Git') {
+          steps {
+            git(url: 'https://github.com/judebevan/docker_minikube_jenkins_demo.git', branch: 'main', credentialsId: '7c560323-9f2e-476a-a8e3-ffc1480c333b')
+          }
+        }
+
+        stage('Docker') {
+          steps {
+            sh 'docker.withRegistry(\'https://hub.docker.com\', \'7c560323-9f2e-476a-a8e3-ffc1480c333b\')'
+          }
+        }
+
       }
     }
 
