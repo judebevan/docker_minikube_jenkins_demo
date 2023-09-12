@@ -68,4 +68,7 @@ pipeline {
     }
 
   }
+  environment {
+    dockerhub_cred = 'e4012d43-b99e-4875-a48f-63d3a7c30cd4'
+  }
 }
