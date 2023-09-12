@@ -1,4 +1,4 @@
-FROM openjdk:20
+FROM openjdk:17
 WORKDIR /app
 ENV PORT 8085
 EXPOSE 8085
