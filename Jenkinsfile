@@ -40,7 +40,7 @@ pipeline {
 
         stage('Docker') {
           steps {
-            sh 'docker login -u $DOCKERHUB_CRED_USR --password-stdin'
+            sh 'docker login judebevan JDbvn2829.'
           }
         }
 
