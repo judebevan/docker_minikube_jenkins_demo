@@ -6,7 +6,7 @@ pipeline {
                 checkout scm
             }
     }  
-    
+
     stage('HelloPrompt') {
       steps {
         echo 'hello-world'
@@ -60,12 +60,12 @@ pipeline {
             }
         }
 
-    stage('Deploying') {
-      steps {
-        sh '''kubectl apply -f deployment.yaml
-'''
-      }
-    }
+//     stage('Deploying') {
+//       steps {
+//         sh '''kubectl apply -f deployment.yaml
+// '''
+//       }
+//     }
 
   }
   environment {
