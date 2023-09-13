@@ -42,22 +42,9 @@ pipeline {
       }
     }
 
-    stage('Deploying') {
+    stage('pullingImage') {
       steps {
-        sh '''kubectl apply -f deployment.yaml
-'''
-      }
-    }
-
-    stage('ServiceDeployment') {
-      steps {
-        sh 'kubectl apply -f service.yaml'
-      }
-    }
-
-    stage('PostBuildMessage') {
-      steps {
-        echo 'Done Hello'
+        sh 'docker build -t judebevan/hello-world .'
       }
     }
 
