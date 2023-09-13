@@ -6,6 +6,7 @@ pipeline {
                 checkout scm
             }
     }  
+    
     stage('HelloPrompt') {
       steps {
         echo 'hello-world'
