@@ -56,7 +56,9 @@ pipeline {
 
     stage('Deployment') {
       steps {
-        sh 'kubernetesDeploy(configs: "deployment.yaml", kubeconfigID: "kubernetesid")'
+        script {
+          kubernetesDeploy(configs: "deployment.yaml", kubeconfigID: "kubernetesid")
+        } 
       }
     }
 
