@@ -31,20 +31,8 @@ pipeline {
     }
 
     stage('Check Git') {
-      parallel {
-        stage('Check Git') {
-          steps {
-            git(url: 'https://github.com/judebevan/docker_minikube_jenkins_demo.git', branch: 'main', credentialsId: '7c560323-9f2e-476a-a8e3-ffc1480c333b')
-          }
-        }
-
-        stage('DockerLogin') {
-          steps {
-            sh '''echo "JDbvn2829." | docker login -u judebevan -p $dockerpw
-'''
-          }
-        }
-
+      steps {
+        git(url: 'https://github.com/judebevan/docker_minikube_jenkins_demo.git', branch: 'main', credentialsId: '7c560323-9f2e-476a-a8e3-ffc1480c333b')
       }
     }
 
@@ -55,6 +43,7 @@ pipeline {
     }
 
     stage('pullingImage') {
+      agent any
       steps {
         sh 'docker build -t judebevan/hello-world .'
       }
@@ -63,6 +52,5 @@ pipeline {
   }
   environment {
     DOCKERHUB_CRED = 'e4012d43-b99e-4875-a48f-63d3a7c30cd4'
-    dockerpw = 'JDbvn2829.'
   }
 }
