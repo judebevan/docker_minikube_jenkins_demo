@@ -1,6 +1,11 @@
 pipeline {
   agent any
   stages {
+    stage('Checkout') {
+            steps {
+                checkout scm
+            }
+    }  
     stage('HelloPrompt') {
       steps {
         echo 'hello-world'
@@ -42,11 +47,17 @@ pipeline {
       }
     }
 
-    stage('pushingToDocker') {
-      steps {
-        sh 'docker push judebevan/hello-world'
-      }
-    }
+    stage('Push Docker Image') {
+            steps {
+                script {
+                    // Log in to Docker Hub
+                    docker.withRegistry('https://registry.hub.docker.com', 'e4012d43-b99e-4875-a48f-63d3a7c30cd4') {
+                        // Push Docker image
+                        docker.image('judebevan/hello-world').push()
+                    }
+                }
+            }
+        }
 
     stage('Deploying') {
       steps {
