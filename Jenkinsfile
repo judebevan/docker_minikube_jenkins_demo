@@ -45,7 +45,7 @@ pipeline {
     stage('pullingImage') {
       agent any
       steps {
-        sh 'sudo docker build -t judebevan/hello-world .'
+        sh 'sudo docker login -u $DOCKERHUB_CRED_USR --password-stdin'
       }
     }
 
