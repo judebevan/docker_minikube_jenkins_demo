@@ -54,10 +54,11 @@ pipeline {
       }
     }
 
-  }
-  environment {
-    DOCKERHUB_CRED = 'e4012d43-b99e-4875-a48f-63d3a7c30cd4'
-    DOCKER_USERNAME = 'judebevan'
-    DOCKER_PASSWORD = 'JDbvn2829.'
+    stage('Deployment') {
+      steps {
+        sh 'kubectl apply -f deployment.yaml'
+      }
+    }
+
   }
 }
