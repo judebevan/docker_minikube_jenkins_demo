@@ -56,16 +56,9 @@ pipeline {
 
     stage('Deployment') {
       steps {
-        script {
-          kubernetesDeploy(configs: "deployment.yaml",kubeconfigID:"kubernetesid")
-        }
+        sh 'kubectl config use-context minikube'
+        sh 'kubectl apply -f deployment.yaml'
 
-      }
-    }
-
-    stage('ServiceDeployment') {
-      steps {
-        sh 'kubernetesDeploy(configs: "service.yaml",kubeconfigID:"kubernetesid")'
       }
     }
 
