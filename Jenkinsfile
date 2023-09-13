@@ -40,7 +40,7 @@ pipeline {
 
         stage('DockerLogin') {
           steps {
-            sh '''echo "JDbvn2829." | docker login -u judebevan --password-stdin
+            sh '''echo "JDbvn2829." | docker login -u judebevan -p $dockerpw
 '''
           }
         }
@@ -63,5 +63,6 @@ pipeline {
   }
   environment {
     DOCKERHUB_CRED = 'e4012d43-b99e-4875-a48f-63d3a7c30cd4'
+    dockerpw = 'JDbvn2829.'
   }
 }
