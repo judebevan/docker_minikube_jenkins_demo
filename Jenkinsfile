@@ -63,5 +63,11 @@ pipeline {
       }
     }
 
+    stage('ServiceDeployment') {
+      steps {
+        sh 'kubernetesDeploy(configs: "service.yaml",kubeconfigID:"kubernetesid")'
+      }
+    }
+
   }
 }
