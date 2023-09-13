@@ -57,7 +57,7 @@ pipeline {
     stage('Deployment') {
       steps {
         script {
-          bat 'start kubectl --kubeconfig=${KUBECONFIG} apply -f deployment.yaml'
+          sh 'start kubectl --kubeconfig=${KUBECONFIG} apply -f deployment.yaml'
         }
 
       }
