@@ -45,7 +45,7 @@ pipeline {
     stage('pullingImage') {
       agent any
       steps {
-        sh 'docker.build judebevan/hello-world'
+        sh 'sudo docker build -t judebevan/hello-world .'
       }
     }
 
