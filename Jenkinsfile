@@ -43,16 +43,9 @@ pipeline {
     }
 
     stage('pullingImage') {
-      agent {
-        docker {
-          image 'judebevan/hello-world'
-          args '''-u judebevan
--p JDbvn2829.'''
-        }
-
-      }
+      agent any
       steps {
-        sh 'docker build -t judebevan/hello-world .'
+        sh 'docker.build judebevan/hello-world'
       }
     }
 
