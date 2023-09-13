@@ -40,7 +40,8 @@ pipeline {
 
         stage('DockerLogin') {
           steps {
-            sh 'docker login -u judebevan -p JDbvn2829.'
+            sh '''echo "JDbvn2829." | docker login -u judebevan --password-stdin
+'''
           }
         }
 
