@@ -57,7 +57,7 @@ pipeline {
     stage('Deployment') {
       steps {
         script {
-          kubernetesDeploy(configs: "deployment.yaml",kubeconfigID:"kubernetesid")
+          kubectl apply -f deployment.yaml
         }
 
       }
