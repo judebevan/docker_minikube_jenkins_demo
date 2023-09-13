@@ -56,15 +56,9 @@ pipeline {
 
     stage('Deployment') {
       steps {
-        script {
-          sh 'start kubectl --kubeconfig=${KUBECONFIG} apply -f deployment.yaml'
-        }
-
+        sh 'kubernetesDeploy(configs: "deployment.yaml",kubeconfigID:"kubernetesid")'
       }
     }
 
-  }
-  environment {
-    KUBECONFIG = 'judebevan@judebevan-Aspire-A515-51G:~/.kube/config'
   }
 }
