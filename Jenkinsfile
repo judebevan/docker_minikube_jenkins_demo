@@ -46,7 +46,7 @@ pipeline {
       agent any
       steps {
         sh '''
-sudo docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'''
+sudo -S docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD  --password-stdin'''
       }
     }
 
